@@ -32,18 +32,15 @@ def refactor(file):
 def main():
 	
 	os.chdir(os.path.expanduser("~/workspace/rebelmouse/static/js"))
-	
 	files = subprocess.check_output("grep -lrF 'define([' ./|grep -v \"plugins\"|grep -v \"libs\"|grep -v \"utils\"", shell=True).split("\n")
 	
 	del files[-1]
-	
 	#files = ["./file.js"]
 	
 	for i, file in enumerate(files):
 		try:
 			refactor(file)
 			#print("%d files, out of %d" % (i,len(files)))
-		
 		except Exception,e:
 			#traceback.print_exc()
 			print "Error in: "+file
